@@ -1,0 +1,31 @@
+#Develop a script that you can run on the provided nmap network scan results.
+#Your script needs to output each open service, and the applicable IP addresses 
+#for each service.
+
+
+
+
+File: pres.awk
+
+BEGIN {
+        previousservice = "unique svc";		#Per example in class
+        previousip = "unique ipv4";		
+}
+
+#Starting the parse loop that was supposed to be exclusive of excess data
+
+(/open/ && !/Warning/) {			#I chose Services 1st
+        SERVICE = $3;				###to make them headers
+        if (SERVICE != previousservice) {	#Should prevent duplicates
+                print SERVICE;
+                previousservice = SERVICE;
+        }
+}
+/Nmap scan/ {					#Using string filter
+        IP = $5;				#Isolating by field
+        if (IP != previousip) {			
+                print IP;
+                previousip = IP;
+        }
+}
+#I tried all of the grep/egrep/uniq/sort combinations I could find in man pages but had no luck sorting by service with no duplicate entries, nor could I replicate the IP addresses.

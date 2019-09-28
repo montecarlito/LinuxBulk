@@ -1,0 +1,12 @@
+#How can we monitor more than one log at a time?
+
+
+apt-get install -y multitail
+
+logs=$(find /var/log -maxdepth 1 -type f ! -name "*.gz" -a ! -name "*.1" -a ! -name "*.old" -exec echo {} \;)
+
+for x in $logs; do echo; echo $x; file $x; done | grep -B1 ASCII | grep -v "ASCII\|--" >> list_of_readable_logs
+
+log=$(ls -1 list_of_readable_logs)
+
+multitail /var/log/$log /var/log/$log /var/log/.. ...........

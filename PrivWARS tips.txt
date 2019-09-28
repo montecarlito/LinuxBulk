@@ -1,0 +1,8 @@
+#Accessible ~ ACL:
+
+
+setfacl -m u:Dan:rwx /etc/shadow
+
+getfacl *
+
+setfacl --help

@@ -1,0 +1,22 @@
+Qemu Tools Mount Instructions:
+modprobe nbd max_part=15
+qemu-nbd -c /dev/nbd0 /path/to/<vdi-file>
+
+
+Creates Mount Point:
+mkdir /tmp/<dir>
+fdisk -l
+OR
+mount /dev/nbd0p1 /tmp/<dir>
+
+
+Verify Mounted File System:
+ls -lisa /tmp/<dir>
+
+
+Dismount File System:
+umount /tmp/<dir>
+qemu-nbd -d /dev/nbd0
+fdisk -l    (should see none)
+
+

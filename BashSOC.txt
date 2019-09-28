@@ -1,0 +1,23 @@
+#! /bin/bash
+
+#elevate to su or root
+#make device for socket
+mknod /dev/tcp c 30 36
+
+#establish ssh connection to port 22
+exec 7<>/dev/tcp/localhost/22 && cat <&7 &
+
+#call out PID of ssh connection
+P=$(ps -aux | grep sshd | grep accepted | awk '{print $2}')
+
+#list PID attributes
+L=$(ls -l /proc/$P/fd | grep pipe | awk '{print $9}')
+
+#reveal octal value for permissions
+O=$(stat -c "%a" /proc/$P/fd/$L)
+
+#view md5 of permission value
+echo $O | md5sum
+
+#I could set it to disconnect but the server side Login Grace Time is 120 seconds anyway
+# per /etc/ssh/sshd_config

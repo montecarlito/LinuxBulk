@@ -1,0 +1,6 @@
+awk -F '{print $2}' presidents.csv 
+	#shows 2nd field: top to bottom
+
+awk -F '/John/ {print $2} /William/ {print $3}' presidents.csv 
+	#for each line with John: print field 2; for each line with William: print field 3
+

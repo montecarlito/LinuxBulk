@@ -1,0 +1,17 @@
+grep configs /etc/group		#group_name:password:GID:user_list
+
+file file_name			#properties
+
+cat /.bash_history		#The user changes into the /etc/init.d/ directory then runs cat ../ssh/../apt/sources.list. The ../ in the directory path tells the system to go to the parent directory. Since they were in /etc/init.d, the first ../ moves to the /etc/ directory. The ssh/../ cancels each other out, moving into then out of the ssh/ directory. Then the rest of the directory is listed, apt/sources.list. So, the full file path is: /etc/apt/sources.list
+
+find . -name *.pcap		#find file by extension
+
+In Wireshark, use http.authorization as a filter. The authorization string is encoded using base64. Decode it for the answer.
+
+In Wireshark, use dns.qry.name contains empire.localdomain to find the responses with the IP
+
+The file extensions of tar.gz tell us the file is archived and compressed. The options zxvf tell the command to decompress through gzip (z), extract (x), do it verbosely (v), on the specified file (f).  $tar -zxvf filename.tar.gz
+
+grep -e 443/open -e 80/open subspace-scanners.gnmap | wc -l	#how many hosts have 80 or 443 open in nmap scan file
+
+

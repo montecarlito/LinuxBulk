@@ -1,0 +1,30 @@
+#help switch:  get only switches/options for chosen command 
+  netcat --help 
+
+ 
+ .. say I'm looking for a command to use with inodes:
+    
+  man -K inode 
+  Q 
+  [CTRL] + D     .... and keep hitting it till match found
+   
+#which: locates binaries by path
+  which netcat
+   
+#locate: locate files with name in title/path
+   locate find | head
+   
+#whereis: locates the binary path and manpage path for binaries
+   whereis find
+   find: /usr/bin/find /usr/share/man/man1/find.1.gz /usr/share/info/find.info.gz
+   
+#apropos: French for "in context of" locates binaries with similar name
+  apropos grep
+   
+#find: most powerfull command in Linux .. finds ANYTHING/EVERYTHING
+   find / -maxdepth 1 -type d | more
+   find / -type p -exec echo {} \;
+   find /{bin/sbin} /usr/{bin,sbin} /local/usr/{bin,sbin} -type f -exec md5sum >> hashed_bins.txt \;
+   
+    tree: file path tree
+  tree -L 2 /home

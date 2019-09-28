@@ -1,0 +1,5 @@
+#Get MBR of my own system:
+
+df | grep dev | grep -v "udev\|tmpfs"
+
+dd if=/dev/vda of=/root/MBR_file bs=512 count=1

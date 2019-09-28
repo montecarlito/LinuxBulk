@@ -1,0 +1,21 @@
+pwck:
+
+man pwck | grep -A3 DESCRIPTION
+
+pwck -r /etc/passwd | grep bob
+
+ 
+
+chage:
+
+man chage | grep -A3 DESCRIPTION
+
+chage -l bob
+
+ 
+
+passwd:
+
+passwd -S
+
+cut -f1 -d: /etc/passwd | xargs -n 1 -I {} bash -c " echo {} ; passwd -S {}" | grep "NP\|P"

@@ -1,0 +1,5 @@
+#When parsing data sets it is useful to use color-grep switch:
+
+grep --color "root" /etc/{passwd,shadow,group}
+
+grep --color=always /usr/share/cctc/page.html OWASP| more
